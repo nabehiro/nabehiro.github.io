@@ -7,7 +7,22 @@
   <meta name="color-scheme" content="light dark">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
-  <title>TOP | NABEHIRO Store</title>
+  <title>TOP</title>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+  <script>
+    // ユーザーIDを dataLayerに保存
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].split('=');
+      if (cookie[0].trim() === 'userId') {
+        window.dataLayer.push({ 'user_id': cookie[1].trim() });
+        console.log('user_id: ' + cookie[1].trim());
+        break;
+      }
+    }
+  </script>
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({
@@ -19,15 +34,6 @@
     })(window, document, 'script', 'dataLayer', 'GTM-TBCQWPNV');</script>
   <!-- End Google Tag Manager -->
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCPPG03GPJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-KCPPG03GPJ');
-</script>
 
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -45,6 +51,7 @@
         <li><a href="/products.html">products</a></li>
         <li><a href="/cart.html">cart</a></li>
         <li><a href="/mypage.html">mypage</a></li>
+        <li><a href="/login.html">login</a></li>
       </ul>
     </nav>
   </header>

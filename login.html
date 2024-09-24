@@ -7,7 +7,7 @@
   <meta name="color-scheme" content="light dark">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
-  <title>CART</title>
+  <title>LOGIN</title>
   <script>
     window.dataLayer = window.dataLayer || [];
   </script>
@@ -56,12 +56,42 @@
     </nav>
   </header>
   <main class="container">
-    <h2>CART</h2>
+    <h2>LOGIN</h2>
     <hr>
+    <form>
+      <fieldset>
+        <label>
+          User Name
+          <input type="text" name="username" placeholder="user name" autocomplete="username" />
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" placeholder="password" autocomplete="current-password" />
+        </label>
+      </fieldset>
+      <input type="submit" value="Login" />
+    </form>
   </main>
   <footer class="container">
     <p>CSS is provided by <a href="https://picocss.com" target="_blank">Pico.css</a></p>
   </footer>
+  <script>
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = e.target.username.value;
+      const password = e.target.password.value;
+      if (password === 'password') {
+        dataLayer.push({ 'event': 'login', 'method': 'web' });
+        alert('Login success');
+        // ログイン済フラグとユーザー名をCookieに設定
+        document.cookie = 'loggedIn=true; path=/';
+        document.cookie = `userId=${username}; path=/`;
+        location.href = '/mypage.html';
+      } else {
+        alert('Login failed');
+      }
+    });
+  </script>
 </body>
 
 </html>
